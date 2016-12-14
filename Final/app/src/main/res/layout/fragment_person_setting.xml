@@ -1,0 +1,204 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:id="@+id/account_head_item"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp" >
+
+        <TextView
+            android:id="@+id/account_head_icon_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:text="头像"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:id="@+id/head_value"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/nicknameText"
+            android:gravity="center_vertical"
+            android:text="昵称"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <EditText
+            android:id="@+id/getNickname"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/nicknameText"
+            android:background="@null"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/locationText"
+            android:gravity="center_vertical"
+            android:text="地点"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <EditText
+            android:id="@+id/getLocation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/locationText"
+            android:background="@null"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/sexText"
+            android:gravity="center_vertical"
+            android:text="性别"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <EditText
+            android:id="@+id/getSex"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/sexText"
+            android:background="@null"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/introText"
+            android:gravity="center_vertical"
+            android:text="介绍"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <EditText
+            android:id="@+id/getIntro"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/introText"
+            android:background="@null"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/phoneText"
+            android:gravity="center_vertical"
+            android:text="电话"
+            android:textColor="#494949"
+            android:textSize="23sp" />
+
+        <EditText
+            android:id="@+id/getPhone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="23sp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/phoneText"
+            android:background="@null"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/upload"
+        android:text="save"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>
