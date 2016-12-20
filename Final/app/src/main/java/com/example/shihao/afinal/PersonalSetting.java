@@ -63,12 +63,13 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
     private ImageView getHead;
     private Bitmap headFromWeb;
     private String USER;
+    int typeOfPhoto = 0;
 
     StringBuilder sb;
     String []getAllInfo = new String[6];
     String allInfo;
-    private String HEAD_FILE = "http://172.18.58.169:8080/android_login/file/";
-    private  String REQUEST_WEB = "http://172.18.58.169:8080/android_login/getPic.jsp";
+    private String HEAD_FILE = "http://172.19.51.194:8080/android_login/file/";
+    private  String REQUEST_WEB = "http://172.19.51.194:8080/android_login/getPic.jsp";
     //保存图片本地路径
     public static final String ACCOUNT_DIR = Environment.getExternalStorageDirectory().getPath()
             + "/account/";
@@ -115,7 +116,7 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
         getLocation.setText(msg[5]);
         getSex.setText(msg[4]);
         getPhone.setText(msg[3]);
-       // updatedMsg.add(msg[1]);
+        // updatedMsg.add(msg[1]);
         getAllInfo[0] = msg[1];
         new Thread(new Runnable() {
             @Override
@@ -211,14 +212,20 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
         public void run() {
             Log.i("FLAG",String.valueOf(FLAG));
             if(FLAG == 1){
-                int request = UploadUtil.uploadFile(new File(mAlbumPicturePath),REQUEST_WEB,USER);
-
+                int request;
+                if(typeOfPhoto == 0 ){
+                    request = UploadUtil.uploadFile(new File(mAlbumPicturePath),REQUEST_WEB,USER);
+                }
+                else{
+                    request = UploadUtil.uploadFile(fileone,REQUEST_WEB,USER);
+                }
+                Log.i("9999999999999",mAlbumPicturePath);
                 HttpURLConnection connection = null;
                 String url = "";
                 String parameter = "";
                 try{
                     Log.i("key","Begin the connection");
-                    url =  "http://172.18.58.169:8080/android_login/update.jsp";
+                    url =  "http://172.19.51.194:8080/android_login/update.jsp";
 
                     connection = (HttpURLConnection)((new URL(url.toString()).openConnection()));
                     connection.setRequestMethod("POST");
@@ -270,6 +277,7 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
                     .setNegativeButton("相册", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            typeOfPhoto = 0;
                             if (mIsKitKat) {
                                 selectImageUriAfterKikat();
                             } else {
@@ -279,6 +287,7 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
                     }).setPositiveButton("相机", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    typeOfPhoto = 1;
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT,
                             Uri.fromFile(new File(IMGPATH, IMAGE_FILE_NAME)));
@@ -593,7 +602,10 @@ public class PersonalSetting extends Activity implements View.OnClickListener {
             URLConnection connection=url.openConnection();
             connection.connect();
             InputStream inputStream=connection.getInputStream();
-            bm= BitmapFactory.decodeStream(inputStream);
+            BitmapFactory.Options options=new BitmapFactory.Options();
+            options.inSampleSize = 10;
+            bm = BitmapFactory.decodeStream(inputStream,null,options);
+            //      bm= BitmapFactory.decodeStream(inputStream);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

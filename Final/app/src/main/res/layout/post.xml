@@ -6,7 +6,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/items_title"
+        android:id="@+id/item_title"
         android:hint="标题，品类品牌型号都是买家喜欢搜索的"/>
     <View
         android:layout_width="match_parent"
@@ -23,9 +23,9 @@
         android:text="添加照片"
         android:layout_gravity="center"
         android:id="@+id/add_pic"/>
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:id="@+id/recycle"/>
     <LinearLayout

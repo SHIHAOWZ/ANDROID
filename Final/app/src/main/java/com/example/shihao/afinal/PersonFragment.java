@@ -47,8 +47,11 @@ import java.util.Map;
 public class PersonFragment extends Fragment {
     private static final int UPDATE_CONTENT = 0;
     Bundle usermsg;
+
+    Bundle postUserName;
     String headPath;
     Bitmap temp;
+    ImageView publish;
     TextView mainUserName;
     TextView mainSetting;
     TextView mainNickname;
@@ -98,7 +101,21 @@ public class PersonFragment extends Fragment {
         });
 
 
+        publish = (ImageView)getActivity().findViewById(R.id.tab_post_icon);
+        publish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flag == 0){
+                    Toast.makeText(getActivity(),"请登录",Toast.LENGTH_SHORT).show();
+                }
+                else{
 
+                    Intent intent = new Intent(getActivity(), post.class);
+                    intent.putExtras(postUserName);
+                    startActivity(intent);
+                }
+            }
+        });
 
         //点击求助事件
         final TextView help = (TextView)getActivity().findViewById(R.id.gethelp);
@@ -221,12 +238,12 @@ public class PersonFragment extends Fragment {
                     String getpassword = getLoginPassword.getText().toString();
                     if(type.equals("login"))
                     {
-                        url = "http://172.18.58.169:8080/android_login/login.jsp";
+                        url = "http://172.19.51.194:8080/android_login/login.jsp";
                         parameter = "username=" + getusername + "&password="+getpassword;
                     }
                     if(type.equals("register"))
                     {
-                        url = "http://172.18.58.169:8080/android_login/register.jsp";
+                        url = "http://172.19.51.194:8080/android_login/register.jsp";
                         parameter = "username="+getRegUserName.getText().toString()+"&password="+getRegPassword.getText().toString()+"&phone="+getRegPhone.getText().toString();
                     }
                     connection = (HttpURLConnection)((new URL(url.toString()).openConnection()));
@@ -251,8 +268,11 @@ public class PersonFragment extends Fragment {
                     msg = response.toString();
                     usermsg = new Bundle();
                     usermsg.putString("usermsg",msg);
+                    postUserName = new Bundle();
+                    postUserName.putString("userName",msg.split(" ")[1]);
                     if(msg.split(" ")[0].equals("correct")){
-                        temp = getPicture("http://172.18.58.169:8080/android_login/file/"+msg.split(" ")[8]);
+                        temp = getPicture("http://172.19.51.194:8080/android_login/file/"+msg.split(" ")[8]);
+                        //temp = getPicture("http://172.19.51.194:8080/android_login/file/2016-12-18_12-31-38.jpg");
                     }
                     Message message = new Message();
                     message.what = UPDATE_CONTENT;
@@ -323,11 +343,10 @@ public class PersonFragment extends Fragment {
 
     public Bitmap getPicture(String path){
         Bitmap bm=null;
-
         try{
-
             URL url=new URL(path);
             URLConnection connection=url.openConnection();
+            connection.setReadTimeout(80000);
             connection.connect();
             InputStream inputStream=connection.getInputStream();
             bm= BitmapFactory.decodeStream(inputStream);
@@ -336,9 +355,6 @@ public class PersonFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return  bm;
-
     }
-
 }

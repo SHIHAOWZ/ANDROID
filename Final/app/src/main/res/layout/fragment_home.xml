@@ -5,10 +5,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    >
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="10dp">
         <android.support.v4.view.ViewPager
             android:id="@+id/vp1"
@@ -30,30 +30,13 @@
         </RelativeLayout>
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="8dp"
-            android:id="@+id/editText"
-            android:hint="search" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
-            android:src="@android:drawable/ic_menu_search" />
-    </LinearLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/title_color"
-        app:tabIndicatorColor="@color/comui_tab_text_color"
-        app:tabSelectedTextColor="@color/comui_tab_text_color"
+        android:background="@color/gray"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="@color/white"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/vp2"

@@ -19,14 +19,14 @@
         <activity android:name=".post" />
         <activity android:name=".PersonalSetting"/>
         <activity android:name=".good_detail"/>
-        <uses-permission android:name="android.permission.INTERNET"/>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-        <uses-permission android:name="com.android.vending.BILLING" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.SEND_SMS" />
-        <uses-permission android:name="android.permission.READ_SMS" />
-        <uses-permission android:name="android.permission.RECEIVE_SMS" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 </manifest>

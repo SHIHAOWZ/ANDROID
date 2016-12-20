@@ -2,14 +2,17 @@ package com.example.shihao.afinal;
 
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.UUID;
 
 /**
@@ -44,14 +47,17 @@ public class UploadUtil {
             conn.setRequestProperty("Charset", CHARSET); // 设置编码
             conn.setRequestProperty("connection", "keep-alive");
             conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary="+ BOUNDARY);
-        //    HttpURLConnection connection = null;
+
+
+//            HttpURLConnection connection = null;
 //            connection = (HttpURLConnection)((new URL(url.toString()).openConnection()));
 //            connection.setRequestMethod("POST");
 //            connection.setReadTimeout(8000);
 //            connection.setConnectTimeout(8000);
-            DataOutputStream out = new DataOutputStream(conn.getOutputStream());
-            String parameter = "user="+user;
-            out.writeBytes(parameter);
+//            DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+//            String parameter = URLEncoder.encode(user,"utf-8");
+//            out.writeBytes("user="+parameter);
+
             if (file != null) {
                 /**
                  * 当文件不为空时执行上传
@@ -65,12 +71,14 @@ public class UploadUtil {
                  * 这里重点注意： name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
                  * filename是文件的名字，包含后缀名
                  */
-
+                int index = file.getName().indexOf(".");
+                String suffix = file.getName().substring(index);
                 sb.append("Content-Disposition: form-data; name=\"file\"; filename=\""
-                        + file.getName() + "\"" + LINE_END);
+                        + user+suffix + "\"" + LINE_END);
                 sb.append("Content-Type: application/octet-stream; charset="
                         + CHARSET + LINE_END);
                 sb.append(LINE_END);
+                Log.i("filename",user+suffix);
                 dos.write(sb.toString().getBytes());
                 InputStream is = new FileInputStream(file);
                 byte[] bytes = new byte[1024];
